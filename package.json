@@ -1,0 +1,29 @@
+{
+  "name": "gatsby-source-transifex",
+  "version": "1.0.0",
+  "description": "Gatsby source plugin for building websites using the Transifex CMS as a data source",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-source-plugin"
+  ],
+  "scripts": {
+    "build": "babel src --out-dir . --ignore **/__tests__",
+    "prepare": "cross-env NODE_ENV=production npm run build",
+    "watch": "babel -w src --out-dir . --ignore **/__tests__"
+  },
+  "author": "Mikael Kristiansson <info@mikaelkristiansson.se> (mikaelkristiansson.se)",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "babel-preset-gatsby-package": "^0.1.4",
+    "cross-env": "^5.1.4"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.0.33"
+  }
+}
