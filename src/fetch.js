@@ -1,26 +1,6 @@
 const fetch = require('node-fetch');
 
-const getProjects = async (url, options) => {
-  try {
-    const response = await fetch(url, options);
-    const json = await response.json();
-    return json;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const getResources = async (url, options) => {
-  try {
-    const response = await fetch(url, options);
-    const json = await response.json();
-    return json;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const getTranslations = async (url, options) => {
+const fetchTransifex = async (url, options) => {
   try {
     const response = await fetch(url, options);
     const json = await response.json();
@@ -47,18 +27,20 @@ module.exports = async (type, options) => {
       Authorization: authHeader,
     },
   };
-  let response;
+  let url;
   switch (type) {
     case 'projects':
-      response = await getProjects(PROJECT_URL, url_options);
+      url = PROJECT_URL;
       break;
     case 'resources':
-      response = await getResources(RESOURCE_URL, url_options);
+      url = RESOURCE_URL;
       break;
     case 'translations':
-      response = await getTranslations(TRANSLATION_URL, url_options);
+      url = TRANSLATION_URL;
       break;
   }
+  if (!url) return;
+  let response = await fetchTransifex(url, url_options);
   // If no case type found return
   return response;
 };
