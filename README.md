@@ -19,10 +19,67 @@ module.exports = {
       options: {
         organization: `your_organization`,
         project: `your_project`,
-        lang_code: `en`,
+        source_lang_code: `en`, // default lang
+        locales: [`de`,`sv`], // array of all translated lang
         auth: `${process.env.TRANSIFEX_USER}:${process.env.TRANSIFEX_TOKEN}`,
       },
     },
   ],
 }
+```
+
+### Query for all nodes
+
+You might query for **all** of resources:
+
+```graphql
+{
+  allTransifexTranslationField {
+    nodes {
+      id
+    }
+  }
+  allTransifexResourceField {
+    nodes {
+      id
+    }
+  }
+}
+```
+
+### Translation as JSON
+
+```graphql
+{
+  transifexTranslationField(id: {eq: "transifex-{insert-your-resource-id}-{insert-locale}"}) {
+    id
+    json
+  }
+}
+
+```
+
+### Resource as JSON
+
+```graphql
+{
+  transifexResourceField(id: {eq: "transifex-{insert-your-resource-id}"}) {
+    id
+    json
+  }
+}
+
+```
+
+### All Translations from locale
+
+```graphql
+{
+  allTransifexTranslationField(filter: { node_locale: { eq: "de" } }) {
+    nodes {
+      id
+    }
+  }
+}
+
 ```

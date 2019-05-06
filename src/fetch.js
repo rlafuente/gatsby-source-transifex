@@ -13,13 +13,15 @@ const fetchTransifex = async (url, options) => {
 module.exports = async (type, options) => {
   console.time(`Fetch Transifex data`);
 
-  const { organization, project, resource, lang_code, auth } = options;
+  const { organization, project, resource, auth, lang_code } = options;
 
   const authHeader = 'Basic ' + new Buffer.from(auth).toString('base64');
+
   const BASE_URL = 'https://www.transifex.com/api/2';
   const PROJECT_URL = `${BASE_URL}/projects/`;
   const RESOURCE_URL = `https://api.transifex.com/organizations/${organization}/projects/${project}/resources/`;
   const TRANSLATION_URL = `${BASE_URL}/project/${project}/resource/${resource}/translation/${lang_code}/`;
+  const CONTENT_URL = `${BASE_URL}/project/${project}/resource/${resource}/content/`;
 
   const url_options = {
     method: 'GET',
@@ -37,6 +39,9 @@ module.exports = async (type, options) => {
       break;
     case 'translations':
       url = TRANSLATION_URL;
+      break;
+    case 'content':
+      url = CONTENT_URL;
       break;
   }
   if (!url) return;
