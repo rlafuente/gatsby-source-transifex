@@ -7,6 +7,11 @@
     "gatsby-plugin",
     "gatsby-source-plugin"
   ],
+  "bugs": {
+    "url": "https://github.com/mikaelkristiansson/gatsby-source-transifex/issues"
+  },
+  "homepage": "https://github.com/mikaelkristiansson/gatsby-source-transifex/tree/master/#readme",
+  "repository": "https://github.com/mikaelkristiansson/gatsby-source-transifex",
   "scripts": {
     "build": "babel src --out-dir . --ignore **/__tests__",
     "prepare": "cross-env NODE_ENV=production npm run build",
