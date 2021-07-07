@@ -45,7 +45,10 @@ module.exports = async (type, options) => {
       break;
   }
   if (!url) return;
+  console.log('---- PLUGIN DEBUG ----');
+  console.log(url);
   let response = await fetchTransifex(url, url_options);
   // If no case type found return
+  console.log(response);
   return response;
 };
