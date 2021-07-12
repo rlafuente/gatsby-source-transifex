@@ -8,6 +8,15 @@
 
 First, you need a way to pass environment variables to the build process, so secrets and other secured data aren't committed to source control. We recommend using [`dotenv`][dotenv] which will then expose environment variables. [Read more about dotenv and using environment variables here][envvars]. Then we can _use_ these environment variables and configure our plugin.
 
+Here's an example `.env.production` file for dotenv:
+
+```
+TRANSIFEX_USER=api
+TRANSIFEX_TOKEN=1234567890
+```
+
+Remember to use the `api` username and not your Transifex handle. Also remember to create an identical `.env.development` file so that dotenv is not confused.
+
 ### Using Delivery API
 
 ```javascript
